@@ -1,0 +1,69 @@
+{
+    "builders": [
+      {
+        "name": "{{user `vm_name`}}",
+        "vm_name": "{{user `vm_name`}}",
+        "type": "vmware-iso",
+        "guest_os_type": "ubuntu-64",
+        "tools_upload_flavor": "linux",
+        "headless": false,
+  
+        "iso_urls": [
+            "iso/ubuntu-18.04.1-server-amd64.iso",
+            "http://old-releases.ubuntu.com/releases/18.04.0/ubuntu-18.04.1-server-amd64.iso"
+        ],
+
+        "iso_checksum": "e8264fa4c417216f4304079bd94f895e",
+        "iso_checksum_type": "md5",
+  
+        "communicator" : "ssh",
+        "ssh_username": "dummy",
+        "ssh_password": "dummy",
+        "ssh_timeout": "10m",
+  
+        "disk_type_id": "thin",
+
+        "floppy_files": [
+          "http/preseed.cfg"
+        ],
+
+        "boot_command": [
+            "<enter><wait>",
+            "<enter><wait><f6><esc><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+            "/install/vmlinuz noapic ",
+            "preseed/file=/floppy/preseed.cfg ",
+            "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
+            "hostname={{ .Name }} ",
+            "fb=false debconf/frontend=noninteractive ",
+            "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
+            "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
+            "initrd=/install/initrd.gz -- <enter>"
+        ],
+
+        "boot_wait": "2s",
+  
+        "shutdown_command": "echo 'shutdown -P now' > shutdown.sh; echo 'nullgrid'|sudo -S sh 'shutdown.sh'",
+  
+        "remote_type": "esx5",
+        "remote_host": "{{user `esxi_host`}}",
+        "remote_datastore": "{{user `esxi_vm_datastore`}}",
+        "remote_cache_datastore": "{{user `esxi_cache_datastore`}}",
+        "remote_username": "{{user `esxi_username`}}",
+        "remote_password": "{{user `esxi_password`}}",
+        "keep_registered": true,
+        "disk_size" : 20000,
+  
+        "vmx_data": {
+          "ethernet0.networkName": "VM Network",
+          "cpuid.coresPerSocket": "2",
+          "memsize": "4096",
+          "numvcpus": "2",
+          "scsi0.virtualDev": "lsisas1068"
+        },
+  
+        "vnc_disable_password": true
+      }
+  ]
+  
+}
+  
