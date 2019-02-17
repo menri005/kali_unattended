@@ -6,7 +6,7 @@
         "type": "vmware-iso",
         "guest_os_type": "ubuntu-64",
         "tools_upload_flavor": "linux",
-        "headless": false,
+        "headless": true,
   
         "iso_urls": [
             "iso/ubuntu-18.04.1-server-amd64.iso",
@@ -20,29 +20,43 @@
         "ssh_username": "dummy",
         "ssh_password": "dummy",
         "ssh_timeout": "10m",
-  
-        "disk_type_id": "thin",
 
-        "floppy_files": [
+        "disk_size" : 40000,
+        "disk_type_id": "thin",
+        "vmx_data": {
+          "memsize": 8,
+          "numvcpus": 2,
+          "ethernet0.present": "TRUE",
+          "ethernet0.connectionType": "bridged",
+          "ethernet0.virtualDev": "e1000",
+          "ethernet0.networkName": "VM Network",
+          "ethernet0.wakeOnPcktRcv": "FALSE",
+          "ethernet0.addressType": "generated",
+          "remotedisplay.vnc.enabled": "TRUE",
+          "vhv.enable": "TRUE"
+        },
+
+        "floppy_files" : [
           "http/preseed.cfg"
         ],
 
+
         "boot_command": [
-            "<enter><wait>",
-            "<enter><wait><f6><esc><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
-            "/install/vmlinuz noapic ",
-            "preseed/file=/floppy/preseed.cfg ",
-            "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
-            "hostname={{ .Name }} ",
-            "fb=false debconf/frontend=noninteractive ",
-            "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
-            "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
-            "initrd=/install/initrd.gz -- <enter>"
-        ],
+          "<enter><wait>",
+          "<f6><esc>",
+          "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+          "initrd=/install/initrd.gz ",
+          "hostname={{ user `vm_name` }}",
+          "domain=local.lan",
+          "auto-install/enable=true ",
+          "preseed/file=/floppy/preseed.cfg ",
+          "--- ",
+          "<enter><wait>"
+      ],
 
         "boot_wait": "2s",
   
-        "shutdown_command": "echo 'shutdown -P now' > shutdown.sh; echo 'nullgrid'|sudo -S sh 'shutdown.sh'",
+        "shutdown_command": "init 0",
   
         "remote_type": "esx5",
         "remote_host": "{{user `esxi_host`}}",
@@ -51,17 +65,9 @@
         "remote_username": "{{user `esxi_username`}}",
         "remote_password": "{{user `esxi_password`}}",
         "keep_registered": true,
-        "disk_size" : 20000,
   
-        "vmx_data": {
-          "ethernet0.networkName": "VM Network",
-          "cpuid.coresPerSocket": "2",
-          "memsize": "4096",
-          "numvcpus": "2",
-          "scsi0.virtualDev": "lsisas1068"
-        },
-  
-        "vnc_disable_password": true
+        "vnc_disable_password": true,
+        "skip_export": true
       }
   ]
   
