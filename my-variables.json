@@ -1,0 +1,8 @@
+{
+    "vm_name" : "ubuntu-ctf2",
+    "esxi_host": "esxi",
+    "esxi_vm_datastore": "Lab_Datastore",
+    "esxi_cache_datastore": "Large-Datastore",
+    "esxi_username": "",
+    "esxi_password": ""
+}
