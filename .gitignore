@@ -1,3 +1,5 @@
 # ignore the following
+packer_cache/
 *.iso
 .DS_Store
+.my-variables.json
