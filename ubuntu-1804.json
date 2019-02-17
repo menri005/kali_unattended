@@ -24,7 +24,7 @@
         "disk_size" : 40000,
         "disk_type_id": "thin",
         "vmx_data": {
-          "memsize": 8,
+          "memsize": 8000,
           "numvcpus": 2,
           "ethernet0.present": "TRUE",
           "ethernet0.connectionType": "bridged",
@@ -46,17 +46,17 @@
           "<f6><esc>",
           "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
           "initrd=/install/initrd.gz ",
-          "hostname={{ user `vm_name` }}",
-          "domain=local.lan",
+          "netcfg/hostname={{ user `vm_name` }} ",
+          "domain=local.lan ",
           "auto-install/enable=true ",
           "preseed/file=/floppy/preseed.cfg ",
           "--- ",
           "<enter><wait>"
       ],
 
-        "boot_wait": "2s",
+        "boot_wait": "5s",
   
-        "shutdown_command": "init 0",
+        "shutdown_command": "sudo init 0",
   
         "remote_type": "esx5",
         "remote_host": "{{user `esxi_host`}}",
