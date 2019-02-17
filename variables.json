@@ -1,0 +1,8 @@
+{
+    "vm_name" : "",
+    "esxi_host": "",
+    "esxi_vm_datastore": "",
+    "esxi_cache_datastore": "",
+    "esxi_username": "",
+    "esxi_password": ""
+}
