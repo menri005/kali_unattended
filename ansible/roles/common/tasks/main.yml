@@ -1,0 +1,9 @@
+---
+# Run common tasks on this server 
+- name: Getting hostname
+  shell: hostname
+  register: hostname
+
+- name: Printing hostname
+  debug:
+    msg: "Hostname is: {{ hostname.stdout }}"

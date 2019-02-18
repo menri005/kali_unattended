@@ -1,0 +1,12 @@
+---
+# use this playbook to config a server, and tack any role you need to this
+- name: Preparing Ubuntu host!
+  gather_facts: false
+  hosts: all
+  remote_user: dummy
+  vars_files:
+    - variables.yml
+
+  roles:
+    - common
+    - docker

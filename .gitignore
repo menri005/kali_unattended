@@ -2,4 +2,6 @@
 packer_cache/
 *.iso
 .DS_Store
-.my-variables.json
+my-variables.json
+*.pub
+*.retry

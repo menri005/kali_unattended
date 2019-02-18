@@ -37,7 +37,7 @@
         },
 
         "floppy_files" : [
-          "http/preseed.cfg"
+          "floppy/preseed.cfg"
         ],
 
 
@@ -69,6 +69,13 @@
         "vnc_disable_password": true,
         "skip_export": true
       }
+  ],
+
+  "provisioners": [
+    {
+      "type": "ansible",
+      "playbook_file": "ansible/playbook.yml"
+    }
   ]
   
 }
