@@ -60,7 +60,7 @@ Failure to do this will cause Ansible to fail, as it is using `dummy` to perform
 ### ubuntu-1804.json
 
 #### Boot commands
-You may change the boot commands as you see fit, espec
+You may change the boot commands as you see fit. 
 
 #### Server ISO
 You may modify the `iso_urls` variable if you'd like to use a different version of Ubuntu. Please note that if you do not have the ISO, it will be automatically downloaded by Packer and uploaded to the ESXi remote cache. To speed things up, *place the ISO file in the "iso" directory in this package*.
