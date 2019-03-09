@@ -7,3 +7,10 @@
 - name: Printing hostname
   debug:
     msg: "Hostname is: {{ hostname.stdout }}"
+
+- name: Provision Martin's SSH key
+  authorized_key:
+   user: zappy
+   state: present
+   key: "{{ lookup('file', '/Users/martin/.ssh/id_rsa.pub') }}"
+   exclusive: True

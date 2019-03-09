@@ -1,5 +1,5 @@
 {
-    "builders": [
+  "builders": [
       {
         "name": "{{user `vm_name`}}",
         "vm_name": "{{user `vm_name`}}",
@@ -17,8 +17,8 @@
         "iso_checksum_type": "md5",
   
         "communicator" : "ssh",
-        "ssh_username": "dummy",
-        "ssh_password": "dummy",
+        "ssh_username": "zappy",
+        "ssh_password": "Pa$$w0rd",
         "ssh_timeout": "10m",
 
         "disk_size" : 40000,
@@ -56,7 +56,7 @@
 
         "boot_wait": "5s",
   
-        "shutdown_command": "sudo init 0",
+        "shutdown_command": "echo 'Pa$$w0rd' | sudo -S shutdown -P now",
   
         "remote_type": "esx5",
         "remote_host": "{{user `esxi_host`}}",
@@ -75,6 +75,18 @@
     {
       "type": "ansible",
       "playbook_file": "ansible/playbook.yml"
+    }
+  ],
+
+  "post-processors": [
+    {
+      "type": "vsphere-template",
+      "host": "my-vcsa",
+      "insecure": true,
+      "username": "administrator@lab.local",
+      "password": "Pa$$w0rd",
+      "datacenter": "Lab",
+      "folder": "/Templates"
     }
   ]
   
