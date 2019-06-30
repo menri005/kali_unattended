@@ -1,5 +1,6 @@
 # ignore the following
 packer_cache/
+output-kali/
 *.iso
 .DS_Store
 my-variables.json

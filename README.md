@@ -2,15 +2,18 @@
 
 ## Description
 
-This is a template for an unattended install of Kali Linux using Packer and VMWare ESXi. 
+This is a template for an unattended install of Kali Linux using Packer. The package comes with two templates - local (using VMWare Fusion) and remote (using ESXi).
 
 Currently tested with:
-  * Kali 2019.1 on xfce (though other desktop environments *should* work).
+  * Kali 2019.2 on xfce (though other desktop environments *should* work).
   * Packer 1.3.4
   * Ansible 2.7.7
   * ESXi 6.7.0
+  * VMWare Fusion 8.5
 
-The `build_kali.sh` script is there to faciliate running Packer either in debug mode or normal. 
+## build_kali.sh
+
+The `build_kali.sh` script is there to faciliate running Packer. Use this shell script to specify whether you want to run the local or remote template.
 
 ## Packer Variables
 
