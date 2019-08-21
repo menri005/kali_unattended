@@ -5,7 +5,7 @@
 This is a template for an unattended install of Kali Linux using Packer. The package comes with two templates - local (using VMWare Fusion) and remote (using ESXi).
 
 Currently tested with:
-  * Kali 2019.2 on xfce (though other desktop environments *should* work).
+  * Kali 2019.2
   * Packer 1.3.4
   * Ansible 2.7.7
   * ESXi 6.7.0
