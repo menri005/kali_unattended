@@ -30,7 +30,7 @@ else
         local) build "kali_local.json" ;;
         remote) build "kali_esxi.json" ;;
         local-debug) debug "kali_local.json" ;;
-        remote-debug) debug "kali-esxi.json" ;;
+        remote-debug) debug "kali_esxi.json" ;;
         *) display_help ;;
     esac 
 fi

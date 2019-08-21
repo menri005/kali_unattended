@@ -9,10 +9,10 @@
         "headless": true,
   
         "iso_urls": [
-            "iso/kali-linux-xfce-2019.1a-amd64.iso"
+            "iso/kali-linux-2019.2-amd64.iso"
         ],
 
-        "iso_checksum": "106b4ef15fe9328a0403bbd49fd64035",
+        "iso_checksum": "0f89b6225d7ea9c18682f7cc541c1179/",
         "iso_checksum_type": "md5",
   
         "communicator" : "ssh",

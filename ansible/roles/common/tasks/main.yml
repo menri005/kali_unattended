@@ -7,3 +7,15 @@
 - name: Printing hostname
   debug:
     msg: "Hostname is: {{ hostname.stdout }}"
+
+- name: Install open vm tools
+  apt:
+    name: open-vm-tools-desktop
+
+- name: Install fuse
+  apt:
+    name: fuse
+
+- name: Install terminator
+  apt:
+    name: terminator
